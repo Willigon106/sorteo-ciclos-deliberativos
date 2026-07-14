@@ -1,0 +1,100 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.banner{
+  position: relative;
+  width:100%;
+  height:100vh;
+}
+.navbar{
+  background-color: white;      
+  padding: 7px 30px;            
+  display: block;                 
+  text-align: center;  
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+  position: sticky;             
+  top: 0;
+  z-index: 1000;
+}
+.logo{
+  width: 950px;
+}
+.navbar ul li{
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+}
+.navbar ul li a{
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+}
+.navbar ul li::after{
+  content: '';
+  height: 3px;
+  width: 0;
+  background: red;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  transition: 0.5s;
+}
+.navbar ul li:hover::after{
+  width: 100%;
+}
+.content{
+  width:100%;
+  height:85%;
+  background-image: 
+    linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.75)), 
+    url(../public/imagenes/Foto_opcion_2.JPG);
+  background-size: cover;
+  background-position: 0 40%;
+  text-align: center;
+}
+.content h1{
+  font-size:82px ;
+  padding-top: 55px;
+  color: #fff;
+}
+.content p{
+  font-size:60px;
+  padding: 190px 0 65px 0;
+  font-weight:100 ;
+  line-height: 25px;
+  color: #fff;
+}
+.botones{
+  width: 600px;
+  padding: 28px;
+  text-align: center;
+  margin: 20px 10px;
+  border-radius: 35px;
+  font-weight: bold;
+  font-size:x-large;
+  border: 2px solid #AB1926;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+span{
+  background: red;
+  height: 100%;
+  width: 0;
+  border-radius: 25px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: 0.5s;
+}
+button:hover span{
+  width: 100%;
+}
+button:hover{
+  border: none;
+}

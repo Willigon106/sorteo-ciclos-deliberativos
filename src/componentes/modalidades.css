@@ -1,0 +1,118 @@
+.contenedor { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;     
+  text-align: center;
+  min-height: 100vh;  /* para que ocupe la altura completa */
+}
+
+.navbar1 {
+  padding: 15px 30px;
+  display: flex;                 
+  align-items: center;          
+  justify-content: center;  
+  position: relative;             
+  top: 0;
+  z-index: 1000;
+  background-color: white; /* fondo para que no se mezcle si haces scroll */
+  margin-bottom: 20px; /*  espacio debajo del logo */
+}
+
+.logo1 {
+  width: 900px;
+}
+
+.contenedor h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #333;
+  text-align: center;
+  border-bottom: 4px solid #CB1617;
+  padding: 0 25px 5px;
+  width: fit-content;
+}
+.contenedor p{
+  font-size: 26px;
+  font-weight: 700;
+}
+.boton{
+  width: 280px;
+  padding: 28px;
+  text-align: center;
+  margin: 20px 10px;
+  border-radius: 35px;
+  font-weight: bold;
+  font-size:x-large;
+  border: 2px solid #AB1926;
+  background: transparent;
+  color: black;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.btn-descargar{
+  background-image: url(../../public/imagenes/descargar.png);
+  background-position: 6px;
+  background-repeat: no-repeat;
+  background-size: 35px;
+  background-color: rgba(247, 167, 32, 1);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  margin: 20px 40px 40px;
+  text-indent: 24px;
+}
+a:visited .boton{
+  /*background-color: #AB1926;*/
+  color: #AB1926;
+  border-color: rgba(246, 142, 47, 1);
+}
+button:disabled{
+  background-color: #AAA;
+  cursor: default;
+}
+button:hover:disabled{
+  background-color: #AAA;
+}
+span{
+  background: #AB1926;
+  height: 100%;
+  width: 0;
+  border-radius: 25px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: 0.5s;
+}
+button:hover span{
+  width: 100%;
+}
+button:hover{
+  border: none;
+  color: #fff;
+  transition: 0.5s;
+}
+.btn-volver {
+  background-color: #CB1617;
+  color: white;
+  border:none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  margin: 20px 0 40px 0;
+}
+.btn-volver:hover {
+  background-color: #AB1926;
+}
