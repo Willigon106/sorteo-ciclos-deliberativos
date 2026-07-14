@@ -5,10 +5,8 @@ import { Link } from "react-router-dom";
 
 function App() {
   const [mujeresAdultas, setMujeresAdultas] = useState([]);
-
   const [ganadores, setGanadores] = useState([]);
-
-  const [todosLosGanadores, setTodosLosGanadores] = useState([]); 
+ // const [todosLosGanadores, setTodosLosGanadores] = useState([]); 
 
   useEffect(() => {
     leerYFiltrarExcel().then(({ filtrados }) => {
@@ -39,10 +37,10 @@ function App() {
     setGanadores(seleccionados);
     const resultadolocalidad = seleccionados;
 
-    setTodosLosGanadores((prev) => [
+    /*setTodosLosGanadores((prev) => [
       ...prev,
       { categoria, seleccionados }
-    ]);
+    ]);*/
 
     // Codigo para desactivar botón
     const elementob = e.target;

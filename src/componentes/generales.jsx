@@ -8,8 +8,7 @@ function AppSobrantes(){
   const [sobrantes, setSobrantes] = useState([]);
   const [ganadoresSobrantes, setGanadoresSobrantes] = useState([]);
 
-  const [todosLosGanadores, setTodosLosGanadores] = useState([]);
-
+//  const [todosLosGanadores, setTodosLosGanadores] = useState([]);
   useEffect(() => {
     leerYFiltrarExcel().then(({ sobrantes }) => {
       setSobrantes(sobrantes);
@@ -37,10 +36,10 @@ function AppSobrantes(){
     setSobrantes(restantes);
 
     // Agregar al acumulado global
-    setTodosLosGanadores((prev) => [
+    /*setTodosLosGanadores((prev) => [
       ...prev,
       { categoria, seleccionados }
-    ]);
+    ]);*/
 
     // Aumentamos contador
     setCount((prev) => prev + 1);

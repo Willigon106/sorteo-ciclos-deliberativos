@@ -7,7 +7,7 @@ function App() {
   const [count, setCount] = useState(0);
   const [poblacionLgtbi, setPoblacionLgtbi] = useState([]);
   const [ganadoresLgbti, setGanadoresLgbti] = useState([]);
-  const [todosLosGanadores, setTodosLosGanadores] = useState([]);
+//  const [todosLosGanadores, setTodosLosGanadores] = useState([]);
 
   useEffect(() => {
     leerYFiltrarExcel().then(({ filtrados }) => {
@@ -42,10 +42,10 @@ function App() {
     setPoblacionLgtbi(restantes);
 
     // Agregar al acumulado global
-    setTodosLosGanadores((prev) => [
+    /*setTodosLosGanadores((prev) => [
       ...prev,
       { categoria: `LGBTI - Cupo ${count + 1}`, seleccionados }
-    ]);
+    ]);*/
 
     // Aumentamos contador
     setCount((prev) => prev + 1);

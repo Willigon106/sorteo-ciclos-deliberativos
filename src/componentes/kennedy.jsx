@@ -10,14 +10,12 @@ function App() {
   const [hombresJovenes, setHombresJovenes] = useState([]);
   const [mujeresAdultos, setMujeresAdultos] = useState([]);
   const [hombresMayores, setHombresMayores] = useState([]);
-
   const [ganadoresMujeresJovenes, setGanadoresMujeresJovenes] = useState([]);
   const [ganadoresHombresJovenes, setGanadoresHombresJovenes] = useState([]);
   const [ganadoresMujeresAdultas, setGanadoresMujeresAdultas] = useState([]);
   const [ganadoresHombresMayores, setGanadoresHombresMayores] = useState([]);
 
-  const [todosLosGanadores, setTodosLosGanadores] = useState([]);
-
+//  const [todosLosGanadores, setTodosLosGanadores] = useState([]);
   useEffect(() => {
     leerYFiltrarExcel().then(({ filtrados }) => {
       // Mujeres 19-29
@@ -85,10 +83,10 @@ function App() {
     const resultadolocalidad = seleccionados;
 
     // Agregar al acumulado global
-    setTodosLosGanadores((prev) => [
+    /*setTodosLosGanadores((prev) => [
       ...prev,
       { categoria, seleccionados }
-    ]);
+    ]);*/
 
     // Desactivar botón
     e.target.disabled = true;
@@ -165,11 +163,10 @@ const sortearMujeresAdultas = async(participantes, setGanadores, cupos, e, categ
 
   setCount((prev) => prev + 1);
 
-  
-  setTodosLosGanadores((prev) => [
+  /*setTodosLosGanadores((prev) => [
     ...prev,
     { categoria: `Mujer Adulta - Cupo ${count + 1}`, seleccionados: ganadoresSeleccionados }
-  ]);
+  ]);*/
 
   if (count >= 1) {
     e.target.disabled = true;

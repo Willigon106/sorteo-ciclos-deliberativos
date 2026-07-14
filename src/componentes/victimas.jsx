@@ -7,7 +7,7 @@ function App() {
   const [count, setCount] = useState(0);
   const [poblacionVictimas, setPoblacionVictimas] = useState([]);
   const [ganadoresVictimas, setGanadoresVictimas] = useState([]);
-  const [todosLosGanadores, setTodosLosGanadores] = useState([]);
+//  const [todosLosGanadores, setTodosLosGanadores] = useState([]);
 
   useEffect(() => {
     leerYFiltrarExcel().then(({ filtrados }) => {
@@ -44,10 +44,10 @@ function App() {
     setPoblacionVictimas(restantes);
 
     // Agregar al acumulado global
-    setTodosLosGanadores((prev) => [
+    /*setTodosLosGanadores((prev) => [
       ...prev,
       { categoria: `Victimas - Cupo ${count + 1}`, seleccionados }
-    ]);
+    ]);*/
 
     // Aumentamos contador
     setCount((prev) => prev + 1);

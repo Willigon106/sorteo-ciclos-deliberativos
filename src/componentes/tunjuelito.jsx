@@ -6,7 +6,7 @@ import "./sorteo2.css";
 function App() {
   const [mujeresAdultas, setMujeresAdultas] = useState([]);
   const [ganadores, setGanadores] = useState([]);
-  const [todosLosGanadores, setTodosLosGanadores] = useState([]);
+//  const [todosLosGanadores, setTodosLosGanadores] = useState([]);
 
   useEffect(() => {
     leerYFiltrarExcel().then(({ filtrados }) => {
@@ -39,10 +39,10 @@ function App() {
     const resultadolocalidad = seleccionados;
 
     // Agregar al acumulado global
-    setTodosLosGanadores((prev) => [
+    /*setTodosLosGanadores((prev) => [
       ...prev,
       { categoria, seleccionados }
-    ]);
+    ]);*/
 
     // Desactivar botón
     e.target.disabled = true;

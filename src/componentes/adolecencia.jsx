@@ -7,7 +7,7 @@ function AppAdolescencia() {
   const [count, setCount] = useState(0);
   const [adolescencia, setAdolescencia] = useState([]);
   const [ganadoresAdolescencia, setGanadoresAdolescencia] = useState([]);
-  const [todosLosGanadores, setTodosLosGanadores] = useState([]);
+  //const [todosLosGanadores, setTodosLosGanadores] = useState([]);
 
   useEffect(() => {
     leerExcelAdolescencia().then((res) => {
@@ -37,10 +37,10 @@ function AppAdolescencia() {
     setAdolescencia(restantes);
 
     // Agregar al acumulado global
-    setTodosLosGanadores((prev) => [
+    /*setTodosLosGanadores((prev) => [
       ...prev,
       { categoria: `Adolescencia - Cupo ${count + 1}`, seleccionados }
-    ]);
+    ]);*/
 
     // Aumentamos contador
     setCount((prev) => prev + 1);

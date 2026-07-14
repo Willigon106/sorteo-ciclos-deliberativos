@@ -10,8 +10,6 @@ function App() {
   const [hombresJovenes, setHombresJovenes] = useState([]);
   const [hombresMayores, setHombresMayores] = useState([]);
   const [hombresAdultos, setHombresAdultos] = useState([]);
-
-
   const [ganadoresMujeresJovenes, setGanadoresMujeresJovenes] = useState([]);
   const [ganadoresMujeresAdultas, setGanadoresMujeresAdultas] = useState([]);
   const [ganadoresMujeresMayores, setGanadoresMujeresMayores] = useState([]);
@@ -19,7 +17,7 @@ function App() {
   const [ganadoresHombresAdultos, setGanadoresHombresAdultos] = useState([]);
   const [ganadoresHombresMayores, setGanadoresHombresMayores] = useState([]);
 
-  const [todosLosGanadores, setTodosLosGanadores] = useState([]);
+//  const [todosLosGanadores, setTodosLosGanadores] = useState([]);
 
   useEffect(() => {
     leerYFiltrarExcel().then(({ filtrados }) => {
@@ -111,10 +109,10 @@ function App() {
     const resultadolocalidad = seleccionados;
 
     // Agregar al acumulado global
-    setTodosLosGanadores((prev) => [
+    /*setTodosLosGanadores((prev) => [
       ...prev,
       { categoria, seleccionados }
-    ]);
+    ]);*/
 
     // Desactivar botón
     e.target.disabled = true;

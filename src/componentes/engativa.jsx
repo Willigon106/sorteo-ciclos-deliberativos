@@ -8,14 +8,12 @@ function App() {
   const [mujeresAdultos, setMujeresAdultos] = useState([]);
   const [hombresAdultos, setHombresAdultos] = useState([]);
   const [mujeresMayores, setMujeresMayores] = useState([]);
-
   const [ganadoresMujeresAdultas, setGanadoresMujeresAdultas] = useState([]);
   const [ganadoresMujeresMayores, setGanadoresMujeresMayores] = useState([]);
   const [ganadoresHombresJovenes, setGanadoresHombresJovenes] = useState([]);
   const [ganadoresHombresAdultos, setGanadoresHombresAdultos] = useState([]);
   
-  const [todosLosGanadores, setTodosLosGanadores] = useState([]);
-
+//  const [todosLosGanadores, setTodosLosGanadores] = useState([]);
   useEffect(() => {
     leerYFiltrarExcel().then(({ filtrados }) => {
       // Mujeres 19-29
@@ -82,10 +80,10 @@ const sortear = async(participantes, setGanadores, cupos, e, categoria) => {
     const resultadolocalidad = seleccionados;
 
     // Agregar al acumulado global
-    setTodosLosGanadores((prev) => [
+    /*setTodosLosGanadores((prev) => [
       ...prev,
       { categoria, seleccionados }
-    ]);
+    ]);*/
 
     // Desactivar botón
     e.target.disabled = true;
