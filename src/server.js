@@ -128,6 +128,10 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// 3. Optional: Serve Static Frontend Files 
+// Uncomment the line below if you want your server to serve a built frontend folder (like 'dist' or 'build')
+app.use(express.static(path.join(__dirname, 'public')));
+
 // 4. Sample API Routes
 app.get('/api/health', (req, res) => {
     res.status(200).json({ status: 'OK', message: 'Server is running perfectly!' });
