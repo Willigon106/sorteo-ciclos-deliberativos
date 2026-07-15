@@ -122,5 +122,24 @@ app.post('/api/resultado-poblacionales', async (req, res) => {
     }
 });
 
-const PORT = 5000;
-app.listen(PORT, () => console.log(`Servidor escuchando en http://localhost:${PORT}`));
+const PORT = process.env.PORT || 5000;
+
+// 2. Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// 4. Sample API Routes
+app.get('/api/health', (req, res) => {
+    res.status(200).json({ status: 'OK', message: 'Server is running perfectly!' });
+});
+
+//app.listen(PORT, () => console.log(`Servidor escuchando en http://localhost:${PORT}`));
+// 6. Start the Server
+// Render requires binding to host '0.0.0.0' to accept external traffic properly
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`=========================================`);
+    console.log(` Server successfully started!`);
+    console.log(` Listening on port: ${PORT}`);
+    console.log(` Environment: ${process.env.NODE_ENV || 'development'}`);
+    console.log(`=========================================`);
+});
