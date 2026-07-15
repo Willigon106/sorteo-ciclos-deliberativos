@@ -130,7 +130,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // 3. Optional: Serve Static Frontend Files 
 // Uncomment the line below if you want your server to serve a built frontend folder (like 'dist' or 'build')
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // 4. Sample API Routes
 app.get('/api/health', (req, res) => {
