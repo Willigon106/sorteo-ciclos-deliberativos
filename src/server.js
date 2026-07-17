@@ -16,6 +16,27 @@ const IS_PRODUCTION = process.env.NODE_ENV === 'production' || process.env.RENDE
 const EXCEL_DIR = IS_PRODUCTION ? '/data' : path.join(__dirname, 'archivos');
 const EXCEL_PATH = path.join(EXCEL_DIR, 'resultados.xlsx');
 
+// Endpoint para descargar el reporte
+app.get('/api/descargar-reporte', (req, res) => {
+    // 1. Verificar si el archivo realmente existe en el disco
+    if (!fs.existsSync(EXCEL_PATH)) {
+        return res.status(404).json({ 
+            error: 'El archivo de reporte aún no ha sido generado o está vacío.' 
+        });
+    }
+    // 2. Enviar el archivo para descarga informática
+    // El segundo parámetro es el nombre con el que el usuario lo guardará
+    res.download(EXCEL_PATH, 'resultados.xlsx', (err) => {
+        if (err) {
+            console.error("Error al enviar el archivo:", err);
+            // Si las cabeceras ya se enviaron, no podemos usar res.status
+            if (!res.headersSent) {
+                res.status(500).send("No se pudo descargar el archivo.");
+            }
+        }
+    });
+});
+
 app.post('/api/resultado-localidades', async (req, res) => {
     const { ganadores } = req.body;
 
