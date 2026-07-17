@@ -27,13 +27,13 @@ import Sumapaz from "./componentes/sumapaz";
 import LGBTI from "./componentes/LGTBIQ";
 import Discapacidad from "./componentes/discapacidad";
 import Afro from "./componentes/afros";
-import Raizales from "./componentes/raizales";
+//import Raizales from "./componentes/raizales";
 import Indigenas from "./componentes/indigenas";
 import Victimas from "./componentes/victimas";
 import Migrantes from "./componentes/migrantes";
 import Campesinos from "./componentes/campesinos";
 import Adolecencia from "./componentes/adolecencia";
-import Palenqueros from "./componentes/palenqueros";
+//import Palenqueros from "./componentes/palenqueros";
 import Generales from "./componentes/generales";
 //import resultados from "./excel/resultados.xlsx";
 import { API_URL } from './config';
@@ -138,15 +138,12 @@ const App = () => {
         <Route path="/LGTBIQ" element={<LGBTI />} />
         <Route path="/discapacidad" element={<Discapacidad />} />
         <Route path="/afros" element={<Afro />} />
-        <Route path="/raizales" element={<Raizales />} />
         <Route path="/indigena" element={<Indigenas />} />
         <Route path="/victimas" element={<Victimas />} />
         <Route path="/migrantes" element={<Migrantes />} />
         <Route path="/campesinos" element={<Campesinos />} />
         <Route path="/adolecencia" element={<Adolecencia />} />
-        <Route path="/palenqueros" element={<Palenqueros />} />
         <Route path="/generales" element={<Generales />} />
-        
       </Routes>
     </Router>
   );

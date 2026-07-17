@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { leerYFiltrarExcel } from "../excel/leerExcel";
 import { Link } from "react-router-dom";
 import "./sorteo2.css";
+import { API_URL } from '../config';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -123,7 +124,7 @@ function App() {
     try {
       // 2. Enviar los datos mapeados al servidor mediante POST
       // Cambia la URL por la de tu servidor (ej. http://localhost:5000/api/guardar-ganadores)
-      const response = await fetch('http://localhost:5000/api/resultado-localidades', {
+      const response = await fetch(`${API_URL}/api/resultado-localidades`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -204,7 +205,7 @@ const sortearMujeresAdultas = async(participantes, setGanadores, cupos, e, categ
     try {
       // 2. Enviar los datos mapeados al servidor mediante POST
       // Cambia la URL por la de tu servidor (ej. http://localhost:5000/api/guardar-ganadores)
-      const response = await fetch('http://localhost:5000/api/resultado-localidades', {
+      const response = await fetch(`${API_URL}/api/resultado-localidades`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
