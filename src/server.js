@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 // Ruta física donde se guardará el Excel en tu servidor
-const EXCEL_PATH = path.join(__dirname, '/excel/resultados.xlsx');
+const EXCEL_PATH = path.join(__dirname, '/data/resultados.xlsx');
 
 app.post('/api/resultado-localidades', async (req, res) => {
     const { ganadores } = req.body;
@@ -124,7 +124,7 @@ const PORT = process.env.PORT || 5000;
 // 1. Configura el middleware de CORS
 /*app.use(cors({
   origin: [
-    'http://localhost:5000', // El puerto local de tu frontend de Vite (cámbialo si usas 3000)
+    'http://localhost:3000', // El puerto local de tu frontend de Vite (cámbialo si usas 3000)
     'https://sorteo-ciclos-deliberativos-4oms.onrender.com/' // La URL que tendrá tu frontend en Render cuando lo despliegues
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
