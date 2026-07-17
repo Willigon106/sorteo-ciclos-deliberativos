@@ -7,7 +7,8 @@ app.use(cors());
 app.use(express.json());
 
 // Ruta física donde se guardará el Excel en tu servidor
-const EXCEL_PATH = path.join(__dirname, '/data/resultados.xlsx');
+//const EXCEL_PATH = path.join(__dirname, '/data/resultados.xlsx');
+const EXCEL_PATH = '/data/resultados.xlsx';
 
 app.post('/api/resultado-localidades', async (req, res) => {
     const { ganadores } = req.body;
