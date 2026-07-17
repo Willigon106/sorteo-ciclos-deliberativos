@@ -35,7 +35,7 @@ import Campesinos from "./componentes/campesinos";
 import Adolecencia from "./componentes/adolecencia";
 import Palenqueros from "./componentes/palenqueros";
 import Generales from "./componentes/generales";
-import resultados from "./excel/resultados.xlsx";
+import resultados from "/data/resultados.xlsx";
 
 function Principal(){
   // 1. Creamos el estado para contar los clics
