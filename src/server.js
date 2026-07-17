@@ -75,7 +75,7 @@ app.post('/api/resultado-localidades', async (req, res) => {
             { header: 'Número documento', key: 'numeroid', width: 30 },
             { header: 'Fecha de Registro', key: 'fecha', width: 20 }
         ];
-
+        worksheet = workbook.getWorksheet('Localidades');
         // Opcional: Estilo básico para los encabezados
        // worksheet.getRow(1).font = { bold: true };
     }
