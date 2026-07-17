@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const ExcelJS = require('exceljs');
 const path = require('path');
-
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -72,7 +71,6 @@ app.post('/api/resultado-poblacionales', async (req, res) => {
     if (!ganadores || !Array.isArray(ganadores)) {
         return res.status(400).json({ error: 'Datos no válidos o faltantes.' });
     }
-
     const workbook = new ExcelJS.Workbook();
     let worksheet;
 
@@ -123,6 +121,15 @@ app.post('/api/resultado-poblacionales', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
+// 1. Configura el middleware de CORS
+/*app.use(cors({
+  origin: [
+    'http://localhost:5000', // El puerto local de tu frontend de Vite (cámbialo si usas 3000)
+    'https://sorteo-ciclos-deliberativos-4oms.onrender.com/' // La URL que tendrá tu frontend en Render cuando lo despliegues
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true // Permite el envío de cookies o cabeceras de autorización si las usas
+}));*/
 
 // 2. Middleware
 app.use(express.json());
@@ -130,7 +137,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // 3. Optional: Serve Static Frontend Files 
 // Uncomment the line below if you want your server to serve a built frontend folder (like 'dist' or 'build')
-app.use(express.static(path.join(__dirname, '../public')));
+//app.use(express.static(path.join(__dirname, '../public')));
 
 // 4. Sample API Routes
 app.get('/api/health', (req, res) => {

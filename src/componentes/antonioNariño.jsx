@@ -79,7 +79,7 @@ function App() {
     try {
       // 2. Enviar los datos mapeados al servidor mediante POST
       // Cambia la URL por la de tu servidor (ej. http://localhost:5000/api/guardar-ganadores)
-      const response = await fetch('http://localhost:5000/api/resultado-localidades', {
+      const response = await fetch('https://sorteo-ciclos-deliberativos.onrender.com/api/resultado-localidades', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
