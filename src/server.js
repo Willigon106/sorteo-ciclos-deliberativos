@@ -64,6 +64,17 @@ app.post('/api/resultado-localidades', async (req, res) => {
             { header: 'Número documento', key: 'numeroid', width: 30 },
             { header: 'Fecha de Registro', key: 'fecha', width: 20 }
         ];
+        worksheet = workbook.addWorksheet('Poblacional');
+        worksheet.columns = [
+            { header: 'Localidad', key: 'localidad', width: 25 },
+            { header: 'Categoría', key: 'categoria', width: 25 },
+            { header: 'Resultado', key: 'resultado', width: 15 },
+            { header: 'ID', key: 'id', width: 15 },
+            { header: 'Nombre', key: 'nombre', width: 35 },
+            { header: 'Tipo documento', key: 'tipo', width: 35 },
+            { header: 'Número documento', key: 'numeroid', width: 30 },
+            { header: 'Fecha de Registro', key: 'fecha', width: 20 }
+        ];
 
         // Opcional: Estilo básico para los encabezados
        // worksheet.getRow(1).font = { bold: true };
