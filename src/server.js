@@ -5,10 +5,16 @@ const path = require('path');
 const app = express();
 app.use(cors());
 app.use(express.json());
+const fs = require('fs');
 
 // Ruta física donde se guardará el Excel en tu servidor
 //const EXCEL_PATH = path.join(__dirname, '/data/resultados.xlsx');
-const EXCEL_PATH = '/data/resultados.xlsx';
+
+// 1. Definir la ruta exacta hacia el volumen montado en Render
+// Si estás en local usarás un archivo local; si estás en Render usará /data
+const IS_PRODUCTION = process.env.NODE_ENV === 'production' || process.env.RENDER === 'true';
+const EXCEL_DIR = IS_PRODUCTION ? '/data' : path.join(__dirname, 'archivos');
+const EXCEL_PATH = path.join(EXCEL_DIR, 'resultados.xlsx');
 
 app.post('/api/resultado-localidades', async (req, res) => {
     const { ganadores } = req.body;

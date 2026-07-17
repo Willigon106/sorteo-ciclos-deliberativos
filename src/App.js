@@ -35,9 +35,38 @@ import Campesinos from "./componentes/campesinos";
 import Adolecencia from "./componentes/adolecencia";
 import Palenqueros from "./componentes/palenqueros";
 import Generales from "./componentes/generales";
+//import resultados from "./excel/resultados.xlsx";
+const path = require('path');
+const fs = require('fs');
+import { API_URL } from './config';
 
 function Principal(){
-  const resultados = '/data/resultados.xlsx';
+  // Definimos la misma ruta absoluta del paso anterior
+  const IS_PRODUCTION = process.env.NODE_ENV === 'production' || process.env.RENDER === 'true';
+  const EXCEL_DIR = IS_PRODUCTION ? '/data' : path.join(__dirname, 'archivos');
+  const EXCEL_PATH = path.join(EXCEL_DIR, 'resultados.xlsx');
+
+  // Endpoint para descargar el reporte
+  app.get('/api/descargar-reporte', (req, res) => {
+      // 1. Verificar si el archivo realmente existe en el disco
+      if (!fs.existsSync(EXCEL_PATH)) {
+          return res.status(404).json({ 
+              error: 'El archivo de reporte aún no ha sido generado o está vacío.' 
+          });
+      }
+      // 2. Enviar el archivo para descarga informática
+      // El segundo parámetro es el nombre con el que el usuario lo guardará
+      res.download(EXCEL_PATH, 'resultados.xlsx', (err) => {
+          if (err) {
+              console.error("Error al enviar el archivo:", err);
+              // Si las cabeceras ya se enviaron, no podemos usar res.status
+              if (!res.headersSent) {
+                  res.status(500).send("No se pudo descargar el archivo.");
+              }
+          }
+      });
+  });
+
   // 1. Creamos el estado para contar los clics
   const [clickCount, setClickCount] = useState(0);
   // 2. Función que maneja los clics en el banner
@@ -51,13 +80,43 @@ function Principal(){
     }
   };
   // 3. Función oculta que fuerza la descarga del archivo
-  const descargarArchivo = () => { 
-    const link = document.createElement('a');
+  const descargarArchivo = async() => {
+    try {
+      // Reemplaza con tu variable de entorno en Render (ej: import.meta.env.VITE_API_URL)
+      const respuesta = await fetch(`${API_URL}/api/descargar-reporte`, {
+        method: 'GET',
+      });
+
+      if (!respuesta.ok) {
+        const errorData = await respuesta.json();
+        throw new Error(errorData.error || 'Error al descargar el archivo');
+      }
+      // 1. Convertir la respuesta del servidor en un Blob de Excel
+      const blob = await respuesta.blob();
+      // 2. Crear un enlace temporal en el navegador
+      const urlTemporal = window.URL.createObjectURL(blob);
+      const enlace = document.createElement('a');
+      enlace.href = urlTemporal;
+      
+      // Nombre que tendrá el archivo descargado en la PC del usuario
+      enlace.setAttribute('download', 'resultados.xlsx'); 
+      
+      // 3. Forzar el clic del enlace y limpiar la memoria
+      document.body.appendChild(enlace);
+      enlace.click();
+      enlace.parentNode.removeChild(enlace);
+      window.URL.revokeObjectURL(urlTemporal);
+
+    /*const link = document.createElement('a');
     link.href = resultados;
     link.setAttribute('download', 'resultados.xlsx'); // Nombre con el que se guardará
     document.body.appendChild(link);
     link.click();
-    document.body.removeChild(link);
+    document.body.removeChild(link);*/
+    }catch (error) {
+      alert(error.message);
+      console.error(error);
+    }
   };
 
   return(

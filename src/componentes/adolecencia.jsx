@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { leerExcelAdolescencia } from "../excel/leerExcelAdolecencia"; 
 import "./sorteo2.css";
 import { Link } from "react-router-dom";
+import { API_URL } from '../config';
 
 function AppAdolescencia() {
   const [count, setCount] = useState(0);
@@ -82,7 +83,7 @@ function AppAdolescencia() {
     try {
       // 2. Enviar los datos mapeados al servidor mediante POST
       // Cambia la URL por la de tu servidor (ej. http://localhost:5000/api/guardar-ganadores)
-      const response = await fetch('https://sorteo-ciclos-deliberativos.onrender.com/api/resultado-poblacionales', {
+      const response = await fetch(`${API_URL}/api/resultado-poblacionales`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
