@@ -66,8 +66,8 @@ app.post('/api/resultado-localidades', async (req, res) => {
         ];
         worksheet = workbook.addWorksheet('Poblacional');
         worksheet.columns = [
-            { header: 'Localidad', key: 'localidad', width: 25 },
-            { header: 'Categoría', key: 'categoria', width: 25 },
+            { header: 'Grupo poblacional', key: 'localidad', width: 25 },
+            { header: 'Cupo', key: 'categoria', width: 25 },
             { header: 'Resultado', key: 'resultado', width: 15 },
             { header: 'ID', key: 'id', width: 15 },
             { header: 'Nombre', key: 'nombre', width: 35 },
@@ -121,8 +121,8 @@ app.post('/api/resultado-poblacionales', async (req, res) => {
         // Si el archivo no existe, se crea desde cero y se configuran las columnas
         worksheet = workbook.addWorksheet('Poblacional');
         worksheet.columns = [
-            { header: 'Localidad', key: 'localidad', width: 25 },
-            { header: 'Categoría', key: 'categoria', width: 25 },
+            { header: 'Grupo poblacional', key: 'localidad', width: 25 },
+            { header: 'Cupo', key: 'categoria', width: 25 },
             { header: 'Resultado', key: 'resultado', width: 15 },
             { header: 'ID', key: 'id', width: 15 },
             { header: 'Nombre', key: 'nombre', width: 35 },
