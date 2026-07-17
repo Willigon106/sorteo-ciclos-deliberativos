@@ -35,9 +35,9 @@ import Campesinos from "./componentes/campesinos";
 import Adolecencia from "./componentes/adolecencia";
 import Palenqueros from "./componentes/palenqueros";
 import Generales from "./componentes/generales";
-import resultados from "/data/resultados.xlsx";
 
 function Principal(){
+  const resultados = '/data/resultados.xlsx';
   // 1. Creamos el estado para contar los clics
   const [clickCount, setClickCount] = useState(0);
   // 2. Función que maneja los clics en el banner
