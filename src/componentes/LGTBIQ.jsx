@@ -50,8 +50,6 @@ function App() {
 
     // Aumentamos contador
     setCount((prev) => prev + 1);
-    console.log("Cuenta:", count);
-    console.log("Cupos:", cupos);
 
     // Si se completaron 3 cupos, desactivar botón
     if (count >= cupos) {
@@ -65,7 +63,7 @@ function App() {
       const titular = resultadolocalidad[0];
       datosParaEnviar.push({
         localidad: categoria,
-        categoria: "Cupo " + (count+1),
+        categoria: "Cupo " + (count),
         resultado: "Titular",
         id: titular[0],
         nombre: titular[5],
@@ -77,7 +75,7 @@ function App() {
       resultadolocalidad.slice(1).forEach((s, idx) => {
         datosParaEnviar.push({
           localidad: categoria,
-          categoria: "Cupo " + (count+1),
+          categoria: "Cupo " + (count),
           resultado: `Suplente ${idx + 1}`,
           id: s[0],
           nombre: s[5],
@@ -164,7 +162,7 @@ function App() {
             <div className="boton-container"> <button
               type="button"
               className="btn-comenzar"
-              onClick={(e) => sortear(poblacionLgtbi, setGanadoresLgbti, 4, e, "Sectores Sociales LGBTIQ+")}
+              onClick={(e) => sortear(poblacionLgtbi, setGanadoresLgbti, 3, e, "Sectores Sociales LGBTIQ+")}
             >
               Comenzar sorteo
             </button></div>
