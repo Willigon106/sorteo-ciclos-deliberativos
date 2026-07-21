@@ -50,11 +50,9 @@ function App() {
 
     // Aumentamos contador
     setCount((prev) => prev + 1);
-    console.log("Cuenta:", count);
-    console.log("Cupos:", cupos);
 
     // Si se completaron 3 cupos, desactivar botón
-    if (count >=cupos ) {
+    if (count >=2 ) {
       e.target.disabled = true;
     }
 
@@ -164,7 +162,7 @@ function App() {
             <div className="boton-container"> <button
               type="button"
               className="btn-comenzar"
-              onClick={(e) => sortear(poblacionLgtbi, setGanadoresLgbti, 3, e, "Sectores Sociales LGBTIQ+")}
+              onClick={(e) => sortear(poblacionLgtbi, setGanadoresLgbti, 4, e, "Sectores Sociales LGBTIQ+")}
             >
               Comenzar sorteo
             </button></div>

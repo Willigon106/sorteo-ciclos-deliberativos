@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { API_URL } from '../config';
 
 function App() {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
   const [poblacionDiscapacidad, setPoblacionDiscapacidad] = useState([]);
   const [ganadoresDiscapacidad, setGanadoresDiscapacidad] = useState([]);
  // const [todosLosGanadores, setTodosLosGanadores] = useState([]);
@@ -56,7 +56,7 @@ function App() {
     setCount((prev) => prev + 1);
 
     // Si se completaron 3 cupos, desactivar botón
-    if (count >= cupos) {
+    if (count >= 2) {
       e.target.disabled = true;
     }
 
@@ -141,7 +141,7 @@ function App() {
           <div className="boton-container"> <button
             type="button"
             className="btn-comenzar"
-            onClick={(e) => sortear(poblacionDiscapacidad, setGanadoresDiscapacidad, 3, e, "Población con discapacidad")}
+            onClick={(e) => sortear(poblacionDiscapacidad, setGanadoresDiscapacidad, 4, e, "Población con discapacidad")}
           >
             Comenzar sorteo
           </button></div>

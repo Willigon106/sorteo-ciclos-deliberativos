@@ -32,7 +32,7 @@ function App() {
 
     // Mezclamos y seleccionamos ganadores
     const mezclados = [...participantes].sort(() => Math.random() - 0.5);
-    const seleccionados = mezclados.slice(0, cupos);
+    const seleccionados = mezclados.slice(0, 4);
 
     // Guardamos ganadores en el estado
     setGanadores(seleccionados);
@@ -54,7 +54,7 @@ function App() {
     setCount((prev) => prev + 1);
 
     // Si se completaron 2 cupos, desactivar botón
-    if (count >= cupos) {
+    if (cupos >= (count + 1)) {
       e.target.disabled = true;
     }
 
