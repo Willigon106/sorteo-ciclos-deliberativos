@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { API_URL } from '../config';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const [poblacionLgtbi, setPoblacionLgtbi] = useState([]);
   const [ganadoresLgbti, setGanadoresLgbti] = useState([]);
 //  const [todosLosGanadores, setTodosLosGanadores] = useState([]);
@@ -50,9 +50,11 @@ function App() {
 
     // Aumentamos contador
     setCount((prev) => prev + 1);
+    console.log("Cuenta:", count);
+    console.log("Cupos:", cupos);
 
     // Si se completaron 3 cupos, desactivar botón
-    if (count >= 2) {
+    if (count >= cupos) {
       e.target.disabled = true;
     }
 
