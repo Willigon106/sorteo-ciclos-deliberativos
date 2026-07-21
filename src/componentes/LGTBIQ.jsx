@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { API_URL } from '../config';
 
 function App() {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
   const [poblacionLgtbi, setPoblacionLgtbi] = useState([]);
   const [ganadoresLgbti, setGanadoresLgbti] = useState([]);
 //  const [todosLosGanadores, setTodosLosGanadores] = useState([]);
@@ -50,9 +50,11 @@ function App() {
 
     // Aumentamos contador
     setCount((prev) => prev + 1);
+    console.log("Cuenta:", count);
+    console.log("Cupos:", cupos);
 
     // Si se completaron 3 cupos, desactivar botón
-    if (count >= cupos) {
+    if (count >=cupos ) {
       e.target.disabled = true;
     }
 
@@ -63,7 +65,7 @@ function App() {
       const titular = resultadolocalidad[0];
       datosParaEnviar.push({
         localidad: categoria,
-        categoria: "Cupo " + (count),
+        categoria: "Cupo " + (count + 1),
         resultado: "Titular",
         id: titular[0],
         nombre: titular[5],
@@ -75,7 +77,7 @@ function App() {
       resultadolocalidad.slice(1).forEach((s, idx) => {
         datosParaEnviar.push({
           localidad: categoria,
-          categoria: "Cupo " + (count),
+          categoria: "Cupo " + (count + 1),
           resultado: `Suplente ${idx + 1}`,
           id: s[0],
           nombre: s[5],
