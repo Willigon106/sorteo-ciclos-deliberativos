@@ -21,6 +21,12 @@
   color: #555;
   font-size: 1.3rem;
 }
+h2.subtitulo{
+  margin-bottom: 10px;
+}
+p.subtitulo {
+  margin: 0 0 25px 0;
+}
 
 /* Layout */
 .contenido {
