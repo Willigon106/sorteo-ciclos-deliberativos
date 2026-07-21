@@ -89,7 +89,7 @@ function App() {
         const titular = resultadolocalidad[0];
         datosParaEnviar.push({
           localidad: "Usaquén",
-          categoria: categoria + "Cupo " + (count + 1),
+          categoria: categoria + " Cupo " + (count + 1),
           resultado: "Titular",
           id: titular[0],
           nombre: titular[5],
@@ -101,7 +101,7 @@ function App() {
         resultadolocalidad.slice(1).forEach((s, idx) => {
           datosParaEnviar.push({
             localidad: "Usaquén",
-            categoria: categoria + "Cupo " + (count + 1),
+            categoria: categoria + " Cupo " + (count + 1),
             resultado: `Suplente ${idx + 1}`,
             id: s[0],
             nombre: s[5],
@@ -162,7 +162,7 @@ function App() {
       const titular = resultadolocalidad[0];
       datosParaEnviar.push({
         localidad: "Usaquén",
-        categoria: categoria + "Cupo " + (count + 1),
+        categoria: categoria,
         resultado: "Titular",
         id: titular[0],
         nombre: titular[5],
@@ -174,7 +174,7 @@ function App() {
       resultadolocalidad.slice(1).forEach((s, idx) => {
         datosParaEnviar.push({
           localidad: "Usaquén",
-          categoria: categoria + "Cupo " + (count + 1),
+          categoria: categoria,
           resultado: `Suplente ${idx + 1}`,
           id: s[0],
           nombre: s[5],
@@ -270,6 +270,7 @@ function App() {
 
       {/* Bloque Mujeres Mayores */}
       <h2 className="subtitulo">Mujer adulta y mayor de estrato medio y alto</h2>
+      <h2 className="subtitulo">2 cupos</h2>
       <div className="contenido">
         <div className="tabla-container">
           <p>Total: {mujeresMayores.length}</p>
@@ -306,7 +307,7 @@ function App() {
 
           {ganadoresMujeresMayores.length > 0 && (
             <div className="ganadores">
-              <h3>Seleccionados</h3>
+              <h3>Seleccionados Cupo {count}</h3>
               <p className="titular">
                 <strong>Titular:</strong> {ganadoresMujeresMayores[0][0]} - {ganadoresMujeresMayores[0][5]}<br></br>{ganadoresMujeresMayores[0][7]}
               </p>
@@ -324,6 +325,7 @@ function App() {
 
       {/* Bloque Hombres Adultos */}
       <h2 className="subtitulo">Hombre adulto y mayor de estrato medio y alto</h2>
+      <h2 className="subtitulo">1 cupo</h2>
       <div className="contenido">
         <div className="tabla-container">
           <p>Total: {hombresAdultos.length}</p>
