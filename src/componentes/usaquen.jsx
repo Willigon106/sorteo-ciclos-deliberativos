@@ -28,12 +28,12 @@ function App() {
           fila[14] <= 6
       );*/
 
-      const filtroMayores = filtrados.filter(
+      const filtroAdultasMayores = filtrados.filter(
         (fila) =>
           fila[12]?.trim().toLowerCase() === "usaquén" &&
           fila[16]?.trim().toLowerCase() === "mujer" &&
           fila[24]?.trim().toLowerCase() === "ninguna / no aplica" &&
-          fila[15] >= 60 &&
+          fila[15] >= 29 &&
           fila[14] >= 3 &&
           fila[14] <= 6
       );
@@ -44,16 +44,96 @@ function App() {
           fila[16]?.trim().toLowerCase() === "hombre" &&
           fila[24]?.trim().toLowerCase() === "ninguna / no aplica" &&
           fila[15] >= 29 &&
-          fila[15] <= 59 &&
           fila[14] >= 3 &&
           fila[14] <= 6
       );
 
       //setMujeresJovenes(filtroJovenes);
-      setMujeresMayores(filtroMayores);
+      setMujeresMayores(filtroAdultasMayores);
       setHombresAdultos(filtroHombres);
     });
   }, []);
+
+  const sortearMujeresAdultas = async(participantes, setGanadores, cupos, e, categoria) => {
+    if (participantes.length < cupos) {
+      alert("No hay suficientes participantes para sortear.");
+      return;
+    }
+  
+    const mezclados = [...participantes].sort(() => Math.random() - 0.5);
+    const ganadoresSeleccionados = mezclados.slice(0, 4);
+  
+    setGanadores(ganadoresSeleccionados);
+    const resultadolocalidad = ganadoresSeleccionados;
+  
+    const restantes = participantes.filter(
+      (p) => !ganadoresSeleccionados.includes(p)
+    );
+    setMujeresMayores(restantes);
+  
+    setCount((prev) => prev + 1);
+  
+    /*setTodosLosGanadores((prev) => [
+      ...prev,
+      { categoria: `Mujer Adulta - Cupo ${count + 1}`, seleccionados: ganadoresSeleccionados }
+    ]);*/
+  
+    if (cupos <= (count + 1)) {
+      e.target.disabled = true;
+    }
+  
+    // 1. Estructurar los datos de manera limpia para enviarlos al servidor
+      const datosParaEnviar = []
+      // Procesar el Titular (índice 0)
+      if (resultadolocalidad && resultadolocalidad.length > 0) {
+        const titular = resultadolocalidad[0];
+        datosParaEnviar.push({
+          localidad: "Usaquén",
+          categoria: categoria + "Cupo " + (count + 1),
+          resultado: "Titular",
+          id: titular[0],
+          nombre: titular[5],
+          tipo: titular[6],
+          numeroid: titular[7] // Ajusta el nombre de la propiedad según lo que represente el índice 7
+        });
+  
+        // Procesar los Suplentes (del índice 1 en adelante)
+        resultadolocalidad.slice(1).forEach((s, idx) => {
+          datosParaEnviar.push({
+            localidad: "Usaquén",
+            categoria: categoria + "Cupo " + (count + 1),
+            resultado: `Suplente ${idx + 1}`,
+            id: s[0],
+            nombre: s[5],
+            tipo: s[6],
+            numeroid: s[7]
+          });
+        });
+      }
+      //console.log("Selecccionados:", datosParaEnviar);
+      try {
+        // 2. Enviar los datos mapeados al servidor mediante POST
+        // Cambia la URL por la de tu servidor (ej. http://localhost:5000/api/guardar-ganadores)
+        const response = await fetch(`${API_URL}/api/resultado-localidades`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ ganadores: datosParaEnviar }),
+        });
+  
+        const resultado = await response.json();
+        
+        if (response.ok) {
+          console.log(resultado.mensaje || "¡Datos guardados con éxito en el servidor!");
+        } else {
+          alert("Error en el servidor: " + resultado.error);
+        }
+      } catch (error) {
+        console.error("Error de conexión:", error);
+        alert("No se pudo conectar con el servidor. Verifica que esté encendido.");
+      }
+  };
 
   const sortear = async(participantes, setGanadores, cupos, e, categoria) => {
     if (participantes.length < cupos) {
@@ -73,18 +153,7 @@ function App() {
     ]);*/
 
     // Desactivar botón
-    if(cupos==1) {
-      e.target.disabled = true;
-    }
-    else{
-      // Aumentamos contador
-      setCount((prev) => prev + 1);
-
-      if (cupos <= (count + 1)) {
-        e.target.disabled = true;
-      }
-    }
-    
+    e.target.disabled = true;
     
     // 1. Estructurar los datos de manera limpia para enviarlos al servidor
     const datosParaEnviar = []
@@ -200,7 +269,7 @@ function App() {
       </div>*/}
 
       {/* Bloque Mujeres Mayores */}
-      <h2 className="subtitulo">Mujer adulta de estrato medio y alto</h2>
+      <h2 className="subtitulo">Mujer adulta y mayor de estrato medio y alto</h2>
       <div className="contenido">
         <div className="tabla-container">
           <p>Total: {mujeresMayores.length}</p>
@@ -228,7 +297,7 @@ function App() {
               type="button"
               className="btn-comenzar"
               onClick={(e) =>
-                sortear(mujeresMayores, setGanadoresMujeresMayores, 2, e, "Mujer Mayor de estrato medio y alto")
+                sortearMujeresAdultas(mujeresMayores, setGanadoresMujeresMayores, 2, e, "Mujer adulta y mayor de estrato medio y alto")
               }
             >
               Comenzar sorteo
@@ -254,7 +323,7 @@ function App() {
       </div>
 
       {/* Bloque Hombres Adultos */}
-      <h2 className="subtitulo">Hombre Adulto de estrato medio y alto</h2>
+      <h2 className="subtitulo">Hombre adulto y mayor de estrato medio y alto</h2>
       <div className="contenido">
         <div className="tabla-container">
           <p>Total: {hombresAdultos.length}</p>
@@ -282,7 +351,7 @@ function App() {
               type="button"
               className="btn-comenzar"
               onClick={(e) =>
-                sortear(hombresAdultos, setGanadoresHombresAdultos, 1, e, "Hombre Adulto de estrato medio y alto")
+                sortear(hombresAdultos, setGanadoresHombresAdultos, 1, e, "Hombre adulto y mayor de estrato medio y alto")
               }
             >
               Comenzar sorteo
