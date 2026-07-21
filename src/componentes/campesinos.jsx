@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { API_URL } from '../config';
 
 function App() {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
   const [poblacionCampesinos, setPoblacionCampesinos] = useState([]);
   const [ganadoresCampesinos, setGanadoresCampesinos] = useState([]);
  // const [todosLosGanadores, setTodosLosGanadores] = useState([]);
@@ -36,7 +36,7 @@ function App() {
 
     // Mezclamos y seleccionamos ganadores
     const mezclados = [...participantes].sort(() => Math.random() - 0.5);
-    const seleccionados = mezclados.slice(0, cupos);
+    const seleccionados = mezclados.slice(0, 4);
 
     // Guardamos ganadores en el estado
     setGanadores(seleccionados);
@@ -58,7 +58,7 @@ function App() {
     setCount((prev) => prev + 1);
 
     // Si se completaron 3 cupos, desactivar botón
-    if (count >= cupos) {
+    if (cupos >= (count + 1)) {
       e.target.disabled = true;
     }
 
@@ -69,7 +69,7 @@ function App() {
       const titular = resultadolocalidad[0];
       datosParaEnviar.push({
         localidad: categoria,
-        categoria: "Cupo " + (count),
+        categoria: "Cupo " + (count + 1),
         resultado: "Titular",
         id: titular[0],
         nombre: titular[5],
@@ -81,7 +81,7 @@ function App() {
       resultadolocalidad.slice(1).forEach((s, idx) => {
         datosParaEnviar.push({
           localidad: categoria,
-          categoria: "Cupo " + (count),
+          categoria: "Cupo " + (count + 1),
           resultado: `Suplente ${idx + 1}`,
           id: s[0],
           nombre: s[5],
@@ -150,7 +150,7 @@ function App() {
     
               {ganadoresCampesinos.length > 0 && (
                 <div className="ganadores">
-                  <h3>Seleccionados Cupo {count - 1}</h3>
+                  <h3>Seleccionados Cupo {count}</h3>
                   <p className="titular">
                     <strong>Titular:</strong> {ganadoresCampesinos[0][0]} - {ganadoresCampesinos[0][5]}<br></br>{ganadoresCampesinos[0][7]}
                   </p>

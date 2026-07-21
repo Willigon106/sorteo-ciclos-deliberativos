@@ -30,7 +30,7 @@ function App() {
 
     // Mezclamos y seleccionamos ganadores
     const mezclados = [...participantes].sort(() => Math.random() - 0.5);
-    const seleccionados = mezclados.slice(0, cupos);
+    const seleccionados = mezclados.slice(0, 4);
 
     // Guardamos ganadores en el estado
     setGanadores(seleccionados);
@@ -52,7 +52,7 @@ function App() {
     setCount((prev) => prev + 1);
 
     // Si se completaron 3 cupos, desactivar botón
-    if (count >=2 ) {
+    if (cupos >= (count + 1)) {
       e.target.disabled = true;
     }
 
@@ -162,7 +162,7 @@ function App() {
             <div className="boton-container"> <button
               type="button"
               className="btn-comenzar"
-              onClick={(e) => sortear(poblacionLgtbi, setGanadoresLgbti, 4, e, "Sectores Sociales LGBTIQ+")}
+              onClick={(e) => sortear(poblacionLgtbi, setGanadoresLgbti, 3, e, "Sectores Sociales LGBTIQ+")}
             >
               Comenzar sorteo
             </button></div>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { API_URL } from '../config';
 
 function App() {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
   const [poblacionAfro, setPoblacionAfro] = useState([]);
   const [ganadoresAfro, setGanadoresAfro] = useState([]);
  // const [todosLosGanadores, setTodosLosGanadores] = useState([]);
@@ -18,9 +18,7 @@ function App() {
           fila[24]?.trim().toLowerCase() === "población negra afrocolombiana" &&
           fila[19]?.trim().toLowerCase() === "negro/a, afrodescendiente, afrocolombiano/a"
       );
-
       setPoblacionAfro(filtroAfro);
-      
     });
   }, []);
 
@@ -65,7 +63,7 @@ function App() {
       const titular = resultadolocalidad[0];
       datosParaEnviar.push({
         localidad: categoria,
-        categoria: "Cupo " + (count),
+        categoria: "Cupo " + (count + 1),
         resultado: "Titular",
         id: titular[0],
         nombre: titular[5],
@@ -77,7 +75,7 @@ function App() {
       resultadolocalidad.slice(1).forEach((s, idx) => {
         datosParaEnviar.push({
           localidad: categoria,
-          categoria: "Cupo " + (count),
+          categoria: "Cupo " + (count + 1),
           resultado: `Suplente ${idx + 1}`,
           id: s[0],
           nombre: s[5],
@@ -146,7 +144,7 @@ function App() {
   
             {ganadoresAfro.length > 0 && (
               <div className="ganadores">
-                <h3>Seleccionados Cupo {count -1}</h3>
+                <h3>Seleccionados Cupo {count}</h3>
                 <p className="titular">
                   <strong>Titular:</strong> {ganadoresAfro[0][0]} - {ganadoresAfro[0][5]}<br></br>{ganadoresAfro[0][7]}
                 </p>
