@@ -147,7 +147,7 @@ function App() {
             
             {ganadoresMigrante.length > 0 && (
               <div className="ganadores">
-                <h3>Seleccionados Cupo {count}</h3>
+                <h3>Seleccionados Cupo {count - 1}</h3>
                 <p className="titular">
                   <strong>Titular:</strong> {ganadoresMigrante[0][0]} - {ganadoresMigrante[0][5]}<br></br>{ganadoresMigrante[0][7]}
                 </p>
