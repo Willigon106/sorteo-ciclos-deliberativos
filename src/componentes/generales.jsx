@@ -130,7 +130,7 @@ function AppSobrantes(){
   return (
         <div className="contenedor">
           <h1 className="titulo">Generales</h1>
-          <h1 className="titulo"> 4 cupos</h1>
+          <h1 className="titulo"> 8 cupos</h1>
           <h2>Total: {sobrantes.length}</h2>
           <div className="contenido">
             <div className="tabla-container">

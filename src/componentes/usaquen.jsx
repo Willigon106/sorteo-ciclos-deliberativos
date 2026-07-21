@@ -5,18 +5,19 @@ import "./sorteo2.css";
 import { API_URL } from '../config';
 
 function App() {
-  const [mujeresJovenes, setMujeresJovenes] = useState([]);
+  //const [mujeresJovenes, setMujeresJovenes] = useState([]);
   const [mujeresMayores, setMujeresMayores] = useState([]);
   const [hombresAdultos, setHombresAdultos] = useState([]);
-  const [ganadoresMujeresJovenes, setGanadoresMujeresJovenes] = useState([]);
+  //const [ganadoresMujeresJovenes, setGanadoresMujeresJovenes] = useState([]);
   const [ganadoresMujeresMayores, setGanadoresMujeresMayores] = useState([]);
   const [ganadoresHombresAdultos, setGanadoresHombresAdultos] = useState([]);
+  const [count, setCount] = useState(0);
 
   // const [todosLosGanadores, setTodosLosGanadores] = useState([]);
 
   useEffect(() => {
     leerYFiltrarExcel().then(({ filtrados }) => {
-      const filtroJovenes = filtrados.filter(
+      /*const filtroJovenes = filtrados.filter(
         (fila) =>
           fila[12]?.trim().toLowerCase() === "usaquén" &&
           fila[16]?.trim().toLowerCase() === "mujer" &&
@@ -25,7 +26,7 @@ function App() {
           fila[15] <= 59 &&
           fila[14] >= 3 &&
           fila[14] <= 6
-      );
+      );*/
 
       const filtroMayores = filtrados.filter(
         (fila) =>
@@ -48,7 +49,7 @@ function App() {
           fila[14] <= 6
       );
 
-      setMujeresJovenes(filtroJovenes);
+      //setMujeresJovenes(filtroJovenes);
       setMujeresMayores(filtroMayores);
       setHombresAdultos(filtroHombres);
     });
@@ -72,7 +73,18 @@ function App() {
     ]);*/
 
     // Desactivar botón
-    e.target.disabled = true;
+    if(cupos==1) {
+      e.target.disabled = true;
+    }
+    else{
+      // Aumentamos contador
+      setCount((prev) => prev + 1);
+
+      if (count >= cupos) {
+        e.target.disabled = true;
+      }
+    }
+    
     
     // 1. Estructurar los datos de manera limpia para enviarlos al servidor
     const datosParaEnviar = []
@@ -132,7 +144,7 @@ function App() {
       <h1 className="titulo">Participantes - Usaquén</h1>
       <h1 className="titulo">3 cupos</h1>
 
-      {/* Bloque Mujeres jovenes y Adultas */}
+      {/* Bloque Mujeres jovenes y Adultas
       <h2 className="subtitulo">Mujer Joven y Adulta de estrato medio y alto</h2>
       <div className="contenido">
         <div className="tabla-container">
@@ -185,10 +197,10 @@ function App() {
             </div>
           )}
         </div>
-      </div>
+      </div>*/}
 
       {/* Bloque Mujeres Mayores */}
-      <h2 className="subtitulo">Mujer Mayor de estrato medio y alto</h2>
+      <h2 className="subtitulo">Mujer adulta de estrato medio y alto</h2>
       <div className="contenido">
         <div className="tabla-container">
           <p>Total: {mujeresMayores.length}</p>
@@ -216,7 +228,7 @@ function App() {
               type="button"
               className="btn-comenzar"
               onClick={(e) =>
-                sortear(mujeresMayores, setGanadoresMujeresMayores, 4, e, "Mujer Mayor de estrato medio y alto")
+                sortear(mujeresMayores, setGanadoresMujeresMayores, 2, e, "Mujer Mayor de estrato medio y alto")
               }
             >
               Comenzar sorteo
@@ -270,7 +282,7 @@ function App() {
               type="button"
               className="btn-comenzar"
               onClick={(e) =>
-                sortear(hombresAdultos, setGanadoresHombresAdultos, 4, e, "Hombre Adulto de estrato medio y alto")
+                sortear(hombresAdultos, setGanadoresHombresAdultos, 1, e, "Hombre Adulto de estrato medio y alto")
               }
             >
               Comenzar sorteo

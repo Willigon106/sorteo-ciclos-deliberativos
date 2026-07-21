@@ -46,8 +46,8 @@ function AppAdolescencia() {
     // Aumentamos contador
     setCount((prev) => prev + 1);
 
-    // Si se completaron 3 cupos, desactivar botón
-    if (count > 2) {
+    // Si se completaron 4 cupos, desactivar botón
+    if (count >= cupos) {
       e.target.disabled = true;
     }
 
@@ -155,7 +155,7 @@ function AppAdolescencia() {
               )}
             </div>
           </div>
-          {/* Botón pVolver */}
+          {/* Botón Volver */}
           <div className="descargar-container">
             <Link to="/poblaciones">
                 <button className="btn-volver">Volver</button>

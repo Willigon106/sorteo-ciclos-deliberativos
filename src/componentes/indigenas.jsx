@@ -53,7 +53,7 @@ function App() {
     setCount((prev) => prev + 1);
 
     // Si se completaron 3 cupos, desactivar botón
-    if (count >= 1) {
+    if (count >= cupos) {
       e.target.disabled = true;
     }
 
@@ -138,7 +138,7 @@ function App() {
               <div className="boton-container"> <button
                 type="button"
                 className="btn-comenzar"
-                onClick={(e) => sortear(poblacionIndigena, setGanadoresIndigenas, 4, e, "Población Indígena")}
+                onClick={(e) => sortear(poblacionIndigena, setGanadoresIndigenas, 2, e, "Población Indígena")}
               >
                 Comenzar sorteo
               </button></div>
