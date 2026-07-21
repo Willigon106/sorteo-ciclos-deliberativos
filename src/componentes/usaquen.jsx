@@ -61,7 +61,7 @@ function App() {
       return;
     }
     const mezclados = [...participantes].sort(() => Math.random() - 0.5);
-    const seleccionados = mezclados.slice(0, cupos);
+    const seleccionados = mezclados.slice(0, 4);
 
     setGanadores(seleccionados)
     const resultadolocalidad = seleccionados;
@@ -80,7 +80,7 @@ function App() {
       // Aumentamos contador
       setCount((prev) => prev + 1);
 
-      if (count >= cupos) {
+      if (cupos <= (count + 1)) {
         e.target.disabled = true;
       }
     }
@@ -93,7 +93,7 @@ function App() {
       const titular = resultadolocalidad[0];
       datosParaEnviar.push({
         localidad: "Usaquén",
-        categoria: categoria,
+        categoria: categoria + "Cupo " + (count + 1),
         resultado: "Titular",
         id: titular[0],
         nombre: titular[5],
@@ -105,7 +105,7 @@ function App() {
       resultadolocalidad.slice(1).forEach((s, idx) => {
         datosParaEnviar.push({
           localidad: "Usaquén",
-          categoria: categoria,
+          categoria: categoria + "Cupo " + (count + 1),
           resultado: `Suplente ${idx + 1}`,
           id: s[0],
           nombre: s[5],

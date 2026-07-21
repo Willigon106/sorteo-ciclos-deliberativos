@@ -47,7 +47,7 @@ function AppAdolescencia() {
     setCount((prev) => prev + 1);
 
     // Si se completaron 4 cupos, desactivar botón
-    if (cupos >= (count + 1)) {
+    if (cupos <= (count + 1)) {
       e.target.disabled = true;
     }
 
