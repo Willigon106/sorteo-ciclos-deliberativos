@@ -24,7 +24,7 @@ function AppSobrantes(){
 
     // Mezclamos y seleccionamos ganadores
     const mezclados = [...participantes].sort(() => Math.random() - 0.5);
-    const seleccionados = mezclados.slice(0, cupos);
+    const seleccionados = mezclados.slice(0, 4);
 
     // Guardamos ganadores en el estado
     setGanadores(seleccionados);
@@ -46,7 +46,7 @@ function AppSobrantes(){
     setCount((prev) => prev + 1);
 
     // Si se completaron 3 cupos, desactivar botón
-    if (count > 2) {
+    if (cupos <= (count + 1)) {
       e.target.disabled = true;
     }
 
@@ -161,7 +161,6 @@ function AppSobrantes(){
                   Comenzar sorteo
                 </button></div>
                 
-    
                 {ganadoresSobrantes.length > 0 && (
                   <div className="ganadores">
                     <h3>Seleccionados Cupo {count}</h3>
