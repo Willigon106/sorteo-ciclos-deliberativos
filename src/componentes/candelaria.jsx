@@ -11,20 +11,17 @@ function App() {
   
   useEffect(() => {
     leerYFiltrarExcel().then(({ filtrados}) => {
-      // Mujeres 19-29
+      // Hombres
       const filtroAdultas = filtrados.filter(
         (fila) =>
           fila[12]?.trim().toLowerCase() === "la candelaria" &&
           fila[16]?.trim().toLowerCase() === "hombre" &&
           fila[24]?.trim().toLowerCase() === "ninguna / no aplica" &&
-          fila[15] >= 29 &&
-          fila[15] <= 79 &&
+          fila[15] >= 18 &&
           fila[14] >= 1 &&
           fila[14] <= 4 
       );  
-
       setHombresAdultas(filtroAdultas);
-      
     });
   }, []);
 
@@ -34,7 +31,7 @@ function App() {
       return;
     }
     const mezclados = [...participantes].sort(() => Math.random() - 0.5);
-    const seleccionados = mezclados.slice(0, cupos);
+    const seleccionados = mezclados.slice(0, 4);
 
     setGanadores(seleccionados);
     const resultadolocalidad = seleccionados;
@@ -131,7 +128,7 @@ function App() {
       <h1 className="titulo">1 cupo</h1>
 
       {/* Bloque Hombres jovenes */}
-      <h2 className="subtitulo">Hombre Adulto y Mayor de estrato bajo y medio</h2>
+      <h2 className="subtitulo">Hombre joven, adulto y mayor de estrato bajo y medio</h2>
       <div className="contenido">
         <div className="tabla-container">
           <p>Total: {hombresAdultas.length}</p>
@@ -152,12 +149,11 @@ function App() {
             </tbody>
           </table>
         </div>
-
         <div className="sorteo-container">
           <div className="boton-container"> <button
             type="button"
             className="btn-comenzar"
-            onClick={(e) => sortear(hombresAdultas, setGanadores, 4, e,"Hombre Adulto y Mayor de estrato bajo y medio")}
+            onClick={(e) => sortear(hombresAdultas, setGanadores, 1, e,"Hombre joven, adulto y mayor de estrato bajo y medio")}
           >
             Comenzar sorteo
           </button></div>

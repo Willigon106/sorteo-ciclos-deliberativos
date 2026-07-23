@@ -16,12 +16,10 @@ function App() {
           fila[12]?.trim().toLowerCase() === "los mártires" &&
           fila[16]?.trim().toLowerCase() === "mujer" &&
           fila[24]?.trim().toLowerCase() === "ninguna / no aplica" &&
-          fila[15] >= 18 &&
-          fila[15] <= 89 &&
+          fila[15] >= 29 &&
           fila[14] >= 1 &&
           fila[14] <= 4
       );
-
       setMujeresAdultas(filtroAdultas);
     });
   }, []);
@@ -32,7 +30,7 @@ function App() {
       return;
     }
     const mezclados = [...participantes].sort(() => Math.random() - 0.5);
-    const seleccionados = mezclados.slice(0, cupos);
+    const seleccionados = mezclados.slice(0, 4);
 
     setGanadores(seleccionados);
     const resultadolocalidad = seleccionados;
@@ -105,7 +103,7 @@ function App() {
       <h1 className="titulo">1 cupo</h1>
 
       {/* Bloque Mujeres jovenes */}
-      <h2 className="subtitulo">Mujer Joven, Adulta, Mayor de estrato bajo y medio</h2>
+      <h2 className="subtitulo">Mujer adulta y mayor de estrato bajo y medio</h2>
       <div className="contenido">
         <div className="tabla-container">
           <p>Total: {mujeresAdultas.length}</p>
@@ -131,12 +129,11 @@ function App() {
           <div className="boton-container"> <button
             type="button"
             className="btn-comenzar"
-            onClick={(e) => sortear(mujeresAdultas, setGanadoresMujeres, 4, e,"Mujer Joven, Adulta, Mayor de estrato bajo y medio")}
+            onClick={(e) => sortear(mujeresAdultas, setGanadoresMujeres, 1, e,"Mujer adulta y mayor de estrato bajo y medio")}
           >
             Comenzar sorteo
           </button></div>
           
-
           {ganadoresMujeres.length > 0 && (
             <div className="ganadores">
               <h3>Seleccionados</h3>

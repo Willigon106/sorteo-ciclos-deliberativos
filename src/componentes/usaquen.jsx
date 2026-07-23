@@ -268,7 +268,7 @@ function App() {
         </div>
       </div>*/}
 
-      {/* Bloque Mujeres Mayores */}
+      {/* Bloque Mujeres Adultas y Mayores */}
       <h2 className="subtitulo">Mujer adulta y mayor de estrato medio y alto</h2>
       <p className="subtitulo">2 cupos</p>
       <div className="contenido">
@@ -323,7 +323,7 @@ function App() {
         </div>
       </div>
 
-      {/* Bloque Hombres Adultos */}
+      {/* Bloque Hombres Adultos y Mayores */}
       <h2 className="subtitulo">Hombre adulto y mayor de estrato medio y alto</h2>
       <p className="subtitulo">1 cupo</p>
       <div className="contenido">

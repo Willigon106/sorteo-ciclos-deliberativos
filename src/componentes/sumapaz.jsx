@@ -14,13 +14,9 @@ function App() {
       const filtroAdultas = filtrados.filter(
         (fila) =>
           fila[12]?.trim().toLowerCase() === "sumapaz" &&
-          fila[16]?.trim().toLowerCase() === "hombre" &&
-          (fila[24]?.trim().toLowerCase() === "campesinado" ||
-          fila[24]?.trim().toLowerCase() === "ninguna / no aplica") && 
-          fila[15] >= 29 &&
-          fila[15] <= 59 &&
-          fila[14] >= 1 &&
-          fila[14] <= 2
+          fila[24]?.trim().toLowerCase() === "ninguna / no aplica" &&
+          fila[15] >= 18 &&
+          fila[14] >= 1
       );
       setHombresAdultas(filtroAdultas);
     });
@@ -32,7 +28,7 @@ function App() {
       return;
     }
     const mezclados = [...participantes].sort(() => Math.random() - 0.5);
-    const seleccionados = mezclados.slice(0, cupos);
+    const seleccionados = mezclados.slice(0, 4);
 
     setGanadores(seleccionados);
     const resultadolocalidad = seleccionados;
@@ -105,7 +101,7 @@ return (
       <h1 className="titulo">1 cupo</h1>
 
       {/* Bloque Mujeres Jóvenes */}
-      <h2 className="subtitulo">Hombre Adulto de estrato bajo</h2>
+      <h2 className="subtitulo">Hombre o Mujer joven, adulta y mayor</h2>
       <div className="contenido">
         <div className="tabla-container">
           <p>Total: {hombresAdultas.length}</p>
@@ -126,12 +122,11 @@ return (
             </tbody>
           </table>
         </div>
-
         <div className="sorteo-container">
           <div className="boton-container"> <button
             type="button"
             className="btn-comenzar"
-            onClick={(e) => sortear(hombresAdultas, setGanadores, 4, e,"Hombre Adulto de estrato bajo")}
+            onClick={(e) => sortear(hombresAdultas, setGanadores, 1, e,"Hombre o Mujer joven, adulta y mayor")}
           >
             Comenzar sorteo
           </button></div>

@@ -5,26 +5,23 @@ import "./sorteo2.css";
 import { API_URL } from '../config';
 
 function App() {
-  const [mujeresAdultas, setMujeresAdultas] = useState([]);
+  const [hombresAdultos, setHombresAdultos] = useState([]);
   const [ganadores, setGanadores] = useState([]);
 //  const [todosLosGanadores, setTodosLosGanadores] = useState([]);
 
   useEffect(() => {
     leerYFiltrarExcel().then(({ filtrados }) => {
-      // Mujeres 19-29
-      const filtroAdultas = filtrados.filter(
+      // Hombres
+      const filtroAdultos = filtrados.filter(
         (fila) =>
           fila[12]?.trim().toLowerCase() === "puente aranda" &&
-          fila[16]?.trim().toLowerCase() === "mujer" &&
+          fila[16]?.trim().toLowerCase() === "hombre" &&
           fila[24]?.trim().toLowerCase() === "ninguna / no aplica" &&
           fila[15] >= 29 &&
-          fila[15] <= 59 && 
           fila[14] >= 1 &&
           fila[14] <= 4 
       );
-
-      setMujeresAdultas(filtroAdultas);
-      
+      setHombresAdultos(filtroAdultos);
     });
   }, []);
 
@@ -34,7 +31,7 @@ function App() {
       return;
     }
     const mezclados = [...participantes].sort(() => Math.random() - 0.5);
-    const seleccionados = mezclados.slice(0, cupos);
+    const seleccionados = mezclados.slice(0, 4);
 
     setGanadores(seleccionados);
     const resultadolocalidad = seleccionados;
@@ -107,10 +104,10 @@ function App() {
         <h1 className="titulo">1 cupo</h1>
   
         {/* Bloque Mujeres jovenes */}
-        <h2 className="subtitulo">Mujer Adulta de estrato bajo y medio</h2>
+        <h2 className="subtitulo">Hombre adulto y mayor de estrato bajo y medio</h2>
         <div className="contenido">
           <div className="tabla-container">
-            <p>Total: {mujeresAdultas.length}</p>
+            <p>Total: {hombresAdultos.length}</p>
             <table className="tabla">
               <thead>
                 <tr>
@@ -119,7 +116,7 @@ function App() {
                 </tr>
               </thead>
               <tbody>
-                {mujeresAdultas.map((fila, i) => (
+                {hombresAdultos.map((fila, i) => (
                   <tr key={i}>
                     <td>{fila[0]}</td>
                     <td>{fila[7]}</td>
@@ -133,7 +130,7 @@ function App() {
             <div className="boton-container"> <button
               type="button"
               className="btn-comenzar"
-              onClick={(e) => sortear(mujeresAdultas, setGanadores, 4, e,"Mujer Adulta de estrato bajo y medio")}
+              onClick={(e) => sortear(hombresAdultos, setGanadores, 1, e,"Hombre adulto y mayor de estrato bajo y medio")}
             >
               Comenzar sorteo
             </button></div>

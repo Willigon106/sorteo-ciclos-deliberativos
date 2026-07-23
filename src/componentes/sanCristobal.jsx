@@ -21,7 +21,7 @@ function App() {
           fila[16]?.trim().toLowerCase() === "mujer" &&
           fila[24]?.trim().toLowerCase() === "ninguna / no aplica" &&
           fila[15] >= 18 &&
-          fila[15] <= 28 &&
+          fila[15] <= 59 &&
           fila[14] >= 1 &&
           fila[14] <= 4
       );
@@ -32,7 +32,7 @@ function App() {
           fila[12]?.trim().toLowerCase() === "san cristóbal" &&
           fila[16]?.trim().toLowerCase() === "hombre" &&
           fila[24]?.trim().toLowerCase() === "ninguna / no aplica" &&
-          fila[15] >= 29 &&
+          fila[15] >= 18 &&
           fila[15] <= 59 &&
           fila[14] >= 1 &&
           fila[14] <= 4
@@ -49,7 +49,7 @@ function App() {
       return;
     }
     const mezclados = [...participantes].sort(() => Math.random() - 0.5);
-    const seleccionados = mezclados.slice(0, cupos);
+    const seleccionados = mezclados.slice(0, 4);
 
     setGanadores(seleccionados);
     const resultadolocalidad = seleccionados;
@@ -122,7 +122,7 @@ function App() {
       <h1 className="titulo">2 cupos</h1>
 
       {/* Bloque Mujeres jovenes */}
-      <h2 className="subtitulo">Mujer Joven de estrato bajo y medio</h2>
+      <h2 className="subtitulo">Mujer joven y adulta de estrato bajo y medio</h2>
       <div className="contenido">
         <div className="tabla-container">
           <p>Total: {mujeresJovenes.length}</p>
@@ -148,7 +148,7 @@ function App() {
           <div className="boton-container"> <button
             type="button"
             className="btn-comenzar"
-            onClick={(e) => sortear(mujeresJovenes, setGanadoresMujeres, 4, e, "Mujer Joven de estrato bajo y medio")}
+            onClick={(e) => sortear(mujeresJovenes, setGanadoresMujeres, 1, e, "Mujer joven y adulta de estrato bajo y medio")}
           >
             Comenzar sorteo
           </button></div>
@@ -173,7 +173,7 @@ function App() {
       </div>
 
       {/* Bloque Hombres Adultos */}
-      <h2 className="subtitulo">Hombre Adulto de estrato bajo y medio</h2>
+      <h2 className="subtitulo">Hombre joven y adulto de estrato bajo y medio</h2>
       <div className="contenido">
         <div className="tabla-container">
           <p>Total: {hombresAdultos.length}</p>
@@ -199,7 +199,7 @@ function App() {
           <div className="boton-container"> <button
             type="button"
             className="btn-comenzar"
-            onClick={(e) => sortear(hombresAdultos, setGanadoresHombres, 4, e,"Hombre Adulto de estrato bajo y medio")}
+            onClick={(e) => sortear(hombresAdultos, setGanadoresHombres, 1, e,"Hombre joven y adulto de estrato bajo y medio")}
           >
             Comenzar sorteo
           </button></div>

@@ -5,26 +5,24 @@ import "./sorteo2.css";
 import { API_URL } from '../config';
 
 function App() {
-  const [mujeresAdultas, setMujeresAdultas] = useState([]);
-  const [ganadoresMujeres, setGanadoresMujeres] = useState([]);
+  const [hombresAdultos, setHombresAdultos] = useState([]);
+  const [ganadoresHombres, setGanadoresHombres] = useState([]);
  // const [todosLosGanadores, setTodosLosGanadores] = useState([]);
   
   useEffect(() => {
     leerYFiltrarExcel().then(({ filtrados }) => {
-      // Mujeres 19-29
-      const filtroAdultas = filtrados.filter(
+      // Hombres
+      const filtroAdultos = filtrados.filter(
         (fila) =>
           fila[12]?.trim().toLowerCase() === "barrios unidos" &&
-          fila[16]?.trim().toLowerCase() === "mujer" &&
+          fila[16]?.trim().toLowerCase() === "hombre" &&
           fila[24]?.trim().toLowerCase() === "ninguna / no aplica" &&
           fila[15] >= 29 &&
-          fila[15] <= 59 &&
-          fila[14] >= 3 &&
-          fila[14] <= 6 
+          fila[14] >= 1 &&
+          fila[14] <= 4 
       );
 
-      setMujeresAdultas(filtroAdultas);
-      
+      setHombresAdultos(filtroAdultos);
     });
   }, []);
 
@@ -34,7 +32,7 @@ function App() {
       return;
     }
     const mezclados = [...participantes].sort(() => Math.random() - 0.5);
-    const seleccionados = mezclados.slice(0, cupos);
+    const seleccionados = mezclados.slice(0, 4);
 
     setGanadores(seleccionados);
     const resultadolocalidad = seleccionados;
@@ -107,10 +105,10 @@ return (
       <h1 className="titulo">1 cupo</h1>
 
       {/* Bloque Mujeres jovenes */}
-      <h2 className="subtitulo">Mujer Adulta de estrato medio y alto</h2>
+      <h2 className="subtitulo">Hombre adulto y mayor de estrato bajo y medio</h2>
       <div className="contenido">
         <div className="tabla-container">
-          <p>Total: {mujeresAdultas.length}</p>
+          <p>Total: {hombresAdultos.length}</p>
           <table className="tabla">
             <thead>
               <tr>
@@ -119,7 +117,7 @@ return (
               </tr>
             </thead>
             <tbody>
-              {mujeresAdultas.map((fila, i) => (
+              {hombresAdultos.map((fila, i) => (
                 <tr key={i}>
                   <td>{fila[0]}</td>
                   <td>{fila[7]}</td>
@@ -128,25 +126,23 @@ return (
             </tbody>
           </table>
         </div>
-
         <div className="sorteo-container">
           <div className="boton-container"> <button
             type="button"
             className="btn-comenzar"
-            onClick={(e) => sortear(mujeresAdultas, setGanadoresMujeres, 4, e,"Mujer Adulta de estrato medio y alto")}
+            onClick={(e) => sortear(hombresAdultos, setGanadoresHombres, 1, e,"Hombre adulto y mayor de estrato bajo y medio")}
           >
             Comenzar sorteo
           </button></div>
           
-
-          {ganadoresMujeres.length > 0 && (
+          {ganadoresHombres.length > 0 && (
             <div className="ganadores">
               <h3>Seleccionados</h3>
               <p className="titular">
-                <strong>Titular:</strong> {ganadoresMujeres[0][0]} - {ganadoresMujeres[0][5]}<br></br>{ganadoresMujeres[0][7]}
+                <strong>Titular:</strong> {ganadoresHombres[0][0]} - {ganadoresHombres[0][5]}<br></br>{ganadoresHombres[0][7]}
               </p>
               <ul>
-                {ganadoresMujeres.slice(1).map((g, idx) => (
+                {ganadoresHombres.slice(1).map((g, idx) => (
                   <li key={idx}>
                     <strong>Suplente {idx + 1}:</strong> {g[0]} - {g[5]}<br></br>{g[7]}
                   </li>
