@@ -59,77 +59,77 @@ export const leerYFiltrarExcel = async () => {
     const g4 = sexo === "hombre" && edad >= 29;
 
     // Santa Fe
-    const g5 = sexo === "mujer" && edad >= 29 && edad <= 59;
+    const g5 = sexo === "hombre" && edad >= 18 && edad <= 59;
 
     // San Cristobal
-    const g6 = sexo === "mujer"  && edad >= 18 && edad <= 28;
-    const g7 = sexo === "hombre" && edad >= 29 && edad <= 59;
+    const g6 = sexo === "mujer"  && edad >= 18 && edad <= 59;
+    const g7 = sexo === "hombre" && edad >= 18 && edad <= 59;
 
     // Usme
     const g8 = sexo === "hombre" && edad >= 18 && edad <= 59;
-    const g9 = sexo === "mujer"  && edad >= 29 && edad <= 59;
+    const g9 = sexo === "mujer"  && edad >= 18 && edad <= 59;
 
     // Tunjuelito
-    const g10 = sexo === "mujer" && edad >= 29 && edad <= 59;
+    const g10 = sexo === "mujer" && edad >= 18 && edad <= 59;
 
     // Bosa
     const g11 = sexo === "hombre" && edad >= 18 && edad <= 59;
-    const g12 = sexo === "mujer"  && edad >= 29 && edad <= 59;
-    const g13 = sexo === "mujer"  && edad >= 60;
+    const g12 = sexo === "mujer"  && edad >= 18 && edad <= 59;
+    //const g13 = sexo === "mujer"  && edad >= 60;
 
     // Kennedy
-    const g14 = sexo === "mujer"  && edad >= 18 && edad <= 28;
-    const g15 = sexo === "hombre" && edad >= 18 && edad <= 28;
-    const g16 = sexo === "mujer"  && edad >= 29 && edad <= 59;
-    const g17 = sexo === "hombre" && edad >= 60;
+    const g14 = sexo === "mujer"  && edad >= 18 && edad <= 59;
+    const g15 = sexo === "hombre" && edad >= 18 && edad <= 59;
+    //const g16 = sexo === "mujer"  && edad >= 29 && edad <= 59;
+    //const g17 = sexo === "hombre" && edad >= 60;
 
     // Fontibon
-    const g18 = sexo === "mujer"  && edad >= 18 && edad <= 28;
-    const g19 = sexo === "hombre" && edad >= 29 && edad <= 59;
+    const g18 = sexo === "mujer"  && edad >= 29;
+    const g19 = sexo === "hombre" && edad >= 29;
 
     // Engativa
-    const g20 = sexo === "hombre" && edad >= 18 && edad <= 28;
-    const g21 = sexo === "mujer"  && edad >= 29 && edad <= 59;
-    const g22 = sexo === "hombre" && edad >= 29 && edad <= 59;
-    const g23 = sexo === "mujer"  && edad >= 60;
+    const g20 = sexo === "mujer" && edad >= 29;
+    const g21 = sexo === "hombre"  && edad >= 29;
+    //const g22 = sexo === "hombre" && edad >= 29 && edad <= 59;
+    //const g23 = sexo === "mujer"  && edad >= 60;
 
     // Suba
-    const g24 = sexo === "mujer"  && edad >= 18 && edad <= 28;
-    const g25 = sexo === "mujer"  && edad >= 29 && edad <= 59;
-    const g27 = sexo === "mujer"  && edad >= 60;
-    const g28 = sexo === "hombre" && edad >= 18 && edad <= 28;
-    const g29 = sexo === "hombre" && edad >= 29 && edad <= 59;
-    const g30 = sexo === "hombre" && edad >= 60;
+    const g24 = sexo === "mujer"  && edad >= 29;
+    const g25 = sexo === "hombre"  && edad >= 29;
+    //const g27 = sexo === "mujer"  && edad >= 60;
+    //const g28 = sexo === "hombre" && edad >= 18 && edad <= 28;
+    //const g29 = sexo === "hombre" && edad >= 29 && edad <= 59;
+    //const g30 = sexo === "hombre" && edad >= 60;
 
     // Barrios Unidos
-    const g31 = sexo === "mujer" && edad >= 29 && edad <= 59;
+    const g31 = sexo === "hombre" && edad >= 29;
 
     // Teusaquillo
-    const g32 = sexo === "mujer" && edad >= 29 && edad <= 59;
+    const g32 = sexo === "mujer" && edad >= 29;
 
     // Los Mártires
-    const g33 = sexo === "mujer" && edad >= 18 && edad <= 89;
+    const g33 = sexo === "mujer" && edad >= 29;
 
     // Antonio Nariño
-    const g34 = sexo === "mujer" && edad >= 29 && edad <= 59;
+    const g34 = sexo === "mujer" && edad >= 29;
 
     // Puente Aranda
-    const g35 = sexo === "mujer" && edad >= 29 && edad <= 59;
+    const g35 = sexo === "hombre" && edad >= 29;
 
     // La Candelaria
-    const g36 = sexo === "hombre" && edad >= 29 && edad <= 79;
+    const g36 = sexo === "hombre" && edad >= 18;
 
     // Rafael Uribe Uribe
-    const g37 = sexo === "mujer"  && edad >= 18 && edad <= 28;
-    const g38 = sexo === "hombre" && edad >= 29 && edad <= 59;
+    const g37 = sexo === "mujer"  && edad >= 18 && edad <= 59;
+    const g38 = sexo === "hombre" && edad >= 18 && edad <= 59;
 
     // Ciudad Bolívar
-    const g39 = sexo === "mujer"  && edad >= 18 && edad <= 28;
-    const g40 = sexo === "mujer"  && edad >= 29 && edad <= 59;
-    const g41 = sexo === "hombre" && edad >= 60;
+    const g39 = sexo === "mujer"  && edad >= 18 && edad <= 59;
+    const g40 = sexo === "hombre"  && edad >= 18 && edad <= 59;
 
     // Sumapaz
-    const g42 = sexo === "hombre" && edad >= 29 && edad <= 59;
+    const g41 = sexo === "hombre" && edad >= 18;
+    const g42 = sexo === "mujer" && edad >= 18;
 
     
     const pasaLocalidad =
@@ -140,11 +140,11 @@ export const leerYFiltrarExcel = async () => {
         (localidad === "san cristobal"   && (g6 || g7))       ||
         (localidad === "usme"            && (g8 || g9))       ||
         (localidad === "tunjuelito"      && g10)              ||
-        (localidad === "bosa"            && (g11 || g12 || g13)) ||
-        (localidad === "kennedy"         && (g14 || g15 || g16 || g17)) ||
+        (localidad === "bosa"            && (g11 || g12)) ||
+        (localidad === "kennedy"         && (g14 || g15)) ||
         (localidad === "fontibon"        && (g18 || g19))     ||
-        (localidad === "engativa"        && (g20 || g21 || g22 || g23)) ||
-        (localidad === "suba"            && (g24 || g25 || g27 || g28 || g29 || g30)) ||
+        (localidad === "engativa"        && (g20 || g21)) ||
+        (localidad === "suba"            && (g24 || g25)) ||
         (localidad === "barrios unidos"  && g31)              ||
         (localidad === "teusaquillo"     && g32)              ||
         (localidad === "los martires"    && g33)              ||
@@ -152,8 +152,8 @@ export const leerYFiltrarExcel = async () => {
         (localidad === "puente aranda"   && g35)              ||
         (localidad === "la candelaria"   && g36)              ||
         (localidad === "rafael uribe uribe" && (g37 || g38))  ||
-        (localidad === "ciudad bolivar"  && (g39 || g40 || g41)) ||
-        (localidad === "sumapaz"         && g42)
+        (localidad === "ciudad bolivar"  && (g39 || g40)) ||
+        (localidad === "sumapaz"         && (g41 || g42))
       );
 
     
