@@ -51,12 +51,12 @@ export const leerYFiltrarExcel = async () => {
 
     
     // Usaquen
-    const g1 = sexo === "mujer"  && edad >= 18 && edad <= 59;
-    const g2 = sexo === "hombre" && edad >= 29 && edad <= 59;
-    const g3 = sexo === "mujer"  && edad >= 60;
+    //const g1 = sexo === "mujer"  && edad >= 18 && edad <= 59;
+    const g2 = sexo === "hombre" && edad >= 29;
+    const g3 = sexo === "mujer"  && edad >= 29;
 
     // Chapinero
-    const g4 = sexo === "mujer" && edad >= 18 && edad <= 79;
+    const g4 = sexo === "hombre" && edad >= 29;
 
     // Santa Fe
     const g5 = sexo === "mujer" && edad >= 29 && edad <= 59;
@@ -134,7 +134,7 @@ export const leerYFiltrarExcel = async () => {
     
     const pasaLocalidad =
       poblacion === "ninguna / no aplica" && (
-        (localidad === "usaquen"         && (g1 || g2 || g3)) ||
+        (localidad === "usaquen"         && (g2 || g3)) ||
         (localidad === "chapinero"       && g4)               ||
         (localidad === "santa fe"        && g5)               ||
         (localidad === "san cristobal"   && (g6 || g7))       ||

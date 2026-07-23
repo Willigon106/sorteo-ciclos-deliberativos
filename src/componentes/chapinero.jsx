@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     leerYFiltrarExcel().then(({ filtrados }) => {
-      // Mujeres 19-29
+      // Hombres
       const filtroAdultas = filtrados.filter(
         (fila) =>
           fila[12]?.trim().toLowerCase() === "chapinero" &&
